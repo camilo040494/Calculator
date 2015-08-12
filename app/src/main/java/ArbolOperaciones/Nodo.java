@@ -42,22 +42,26 @@ public class Nodo {
         }
     }
 
-    public void operar(){
+    public void operar()throws Exception{
         if (esHoja()) {
             return;
         }
         if (esNumero(derecho.contenido) && esNumero(izquierdo.contenido)) {
             double num1 = Double.parseDouble(izquierdo.contenido);
             double num2 = Double.parseDouble(derecho.contenido);
+
             switch (contenido) {
                 case "*":
                     contenido = (num1*num2)+"";
                     break;
 
                 case "/":
-                    contenido = (num1/num2)+"";
-                    break;
-
+                    if (num2==0){
+                        throw new Exception("No se puede dividir entre 0");
+                    }else{
+                        contenido = (num1/num2)+"";
+                        break;
+                    }
                 case "+":
                     contenido = (num1+num2)+"";
                     break;
@@ -76,11 +80,10 @@ public class Nodo {
     }
 
     public boolean esNumero(String valor){
-        if (valor.equals("+") || valor.equals("-") || valor.equals("/") || valor.equals("*")) {
+        if (valor.equals("+") || valor.equals("-") || valor.equals("/") || valor.equals("*"))
             return false;
-        }else{
+        else
             return true;
-        }
     }
 
     public Nodo getDerecho() {

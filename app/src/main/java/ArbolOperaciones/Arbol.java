@@ -36,7 +36,7 @@ public class Arbol {
         }
     }
 
-    public void operar(){
+    public void operar() throws Exception{
         raiz.operar();
     }
 

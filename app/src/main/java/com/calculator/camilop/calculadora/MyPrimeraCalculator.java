@@ -257,7 +257,12 @@ public class MyPrimeraCalculator extends Activity {
             arbol.agregar(string);
         }
 
-        arbol.operar();
+        try {
+            arbol.operar();
+        }catch (Exception e){
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
 
         String respuesta = arbol.darValorRaiz();
         operacion+="="+respuesta;
